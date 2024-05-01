@@ -1,83 +1,74 @@
 <template>
-<div id="AboutUs page">
-    <v-containe>
-        <v- column>
-            <h1>AboutUs page of strathmore university</h1>
-        </v->
-    </v-containe>
-
-</div>
-</template>
-<template>
-    <div id = 'aboutus'>
-        <v-container>
-                <v-layout column>
-                    <v-carousel>
-                        <v-carousel-item
-                            src="https://images.unsplash.com/photo-1581362072978-14998d01fdaa?q=80&w=1884&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/images/cards/docks.jpg"
-                            cover
-                        ></v-carousel-item>
-
-                        <v-carousel-item
-                            src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
-                            cover
-                        ></v-carousel-item>
-
-                        <v-carousel-item
-                            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                            cover
-                        ></v-carousel-item>
-                    </v-carousel>
-                    </v-layout>
-                    <v-layout>
-                    <v-container>
-                        <v-row align="center" justify="center">
-                            <div class="d-flex align-center flex-column">
-                                <div class="text-subtitle-2">With props</div>
-
-                                <v-card
-                                width="400"
-                                title="This is a title"
-                                subtitle="This is a subtitle"
-                                text="This is content"
-                                ></v-card>
-
-                                <div class="mt-4 text-subtitle-2">With slots</div>
-
-                                <v-card width="400">
-                                <template v-slot:title>
-                                    This is a title
-                                </template>
-
-                                <template v-slot:subtitle>
-                                    This is a subtitle
-                                </template>
-
-                                <template v-slot:text>
-                                    This is content
-                                </template>
-                                </v-card>
-
-                                <div class="mt-4 text-subtitle-2">With markup</div>
-
-                                <v-card width="400">
-                                <v-card-item>
-                                    <v-card-title>This is a title</v-card-title>
-
-                                    <v-card-subtitle>This is a subtitle</v-card-subtitle>
-                                </v-card-item>
-
-                                <v-card-text>
-                                    This is content
-                                </v-card-text>
-                                </v-card>
-                            </div>
-                        </v-row>
-                    </v-container>
-                </v-layout>
-            </v-container>
+  <div class="about-us-container">
+    <h1>About Us</h1>
+    <div class="mission-section">
+      <h2>Our Mission:</h2>
+      <p>
+        At <strong>{{ centerName }}</strong>, our mission is to provide comprehensive and compassionate care for individuals struggling with alcohol and substance abuse disorders. We are dedicated to helping our clients achieve sobriety, regain control of their lives, and build a foundation for long-term recovery.
+      </p>
     </div>
+    <div class="services-section">
+      <h2>Our Services:</h2>
+      <ul>
+        <li>Individual Counseling</li>
+        <li>Group Therapy</li>
+        <li>Family Counseling</li>
+        <li>Medication-Assisted Treatment (MAT)</li>
+        <li>Aftercare Planning</li>
+        <li>24/7 Support Helpline</li>
+        <li>Community Outreach Programs</li>
+      </ul>
+    </div>
+    <div class="why-choose-us-section">
+      <h2>Why Choose Us:</h2>
+      <ul>
+        <li>Experienced and Compassionate Staff</li>
+        <li>Personalized Treatment Plans</li>
+        <li>Confidential and Nonjudgmental Environment</li>
+        <li>Evidence-Based Therapies</li>
+        <li>Commitment to Client Success</li>
+      </ul>
+    </div>
+  </div>
 </template>
-<script setup>
-  const variants = ['elevated', 'flat', 'tonal', 'outlined']
+
+<script>
+export default {
+  data() {
+    return {
+      centerName: "Swift Recovery" 
+    };
+  },
+  mounted() {
+    fetch('/api/data')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+};
 </script>
+
+<style scoped>
+.about-us-container {
+  padding: 20px; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mission-section,
+.services-section,
+.why-choose-us-section {
+  margin-bottom: 20px;
+}
+</style>

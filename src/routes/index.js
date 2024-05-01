@@ -1,13 +1,9 @@
 import {createRouter,createWebHistorz}from 'vue router'
 
 import Homepage from "./..components/Homepage.vue"
-import Events from "./..components/Events.vue"
-import Courses from "./..components/Courses.vue"
 import ContactUs from "./..components/ContactUs.vue"
 import AboutUS from "./..components/AboutUS.vue"
-import Library from "./..components/Library.vue"
-import Partnerships from "./..components/Partnerships.vue"
-import Alumni from "./..components/Alumni.vue"
+import Login from "./..components/Login.vue"
 
 const routes = [
    
@@ -17,15 +13,10 @@ const routes = [
         component: Homepage,
         },
         {
-            path: '/Events',
-            name: 'events',
-            component: Events,
+            path: '/Login',
+            name: 'login',
+            component: Login,
             },
-            {
-                path: '/Courses',
-                name: 'courses',
-                component: Courses,
-                },
                 {
                     path: '/Contactus',
                     name: 'contactus',
@@ -36,21 +27,7 @@ const routes = [
                         name: 'aboutus',
                         component: AboutUS,
                         },
-                        {
-                            path: '/Library',
-                            name: 'library',
-                            component: Library,
-                            },
-                            {
-                                path: '/Partnership',
-                                name: 'partnership',
-                                component: Partnerships,
-                                },
-                                {
-                                    path: '/Alumni',
-                                    name: 'alumni',
-                                    component: Alumni,
-                                       },
+                       
                                     ]
 
 const router = createRouter({
